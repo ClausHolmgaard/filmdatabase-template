@@ -1,0 +1,54 @@
+<%= form_with(model: movie) do |form| %>
+  <% if movie.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :release_date %>
+    <%= form.datetime_field :release_date, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genre %>
+    <%= form.text_field :genre, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :director %>
+    <%= form.text_field :director, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actors %>
+    <%= form.text_field :actors, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plot %>
+    <%= form.text_area :plot, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url, class: "form-control" %>
+  </div>
+
+  <div class="actions inline">
+    <%= form.submit 'Submit', class: "btn btn-primary theme-color" %> |
+    <%= link_to "Cancel", movie, class: "btn btn-primary theme-color" %> |
+    <%= link_to "Back to movies", root_path, class: "btn btn-primary theme-color" %>
+  </div>
+<% end %>

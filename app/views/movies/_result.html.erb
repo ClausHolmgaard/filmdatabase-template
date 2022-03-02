@@ -1,0 +1,37 @@
+
+<% @result = search_for_movies(params[:query]) %>
+
+<% p @result["Response"] %>
+<% if @result["Response"] == "False" %>
+  <% controller.redirect_to search_path, alert: "No results found for #{params[:query]}."%>
+<% else %>
+
+  <% @result['Search'].each do |r| %>
+
+    <%= form_with(model: movie, url: "/movies") do |form| %>
+
+      <div class="card-header">
+        <img width="200" height="200" src="<%= r["Poster"] %>"/>
+        <h5><%= r["Title"] %></h5>
+
+        <% @json = get_omdb_json(r["imdbID"]) %>
+
+        <%= form.hidden_field :title, value: @json['Title'] %>
+        <%= form.hidden_field :release_date, value: @json['Released'] %>
+        <%= form.hidden_field :genre, value: @json['Genre'] %>
+        <%= form.hidden_field :director, value: @json['Director'] %>
+        <%= form.hidden_field :actors, value: @json['Actors'] %>
+        <%= form.hidden_field :plot, value: @json['Plot'] %>
+        <%= form.hidden_field :image_url, value: @json['Poster'] %>
+
+        <div class="actions">
+          <%= form.submit 'Add', class: "btn btn-primary theme-color" %>
+        </div>
+      </div>
+      <br>
+
+    <% end %>
+
+  <% end %>
+
+<% end %>

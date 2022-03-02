@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @movie %>
+
+<div class="inline">
+  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "btn btn-primary theme-color" %> |
+  <%= button_to "Remove this movie", @movie, method: :delete, class: "btn btn-primary theme-color" %> |
+  <%= link_to "Back to movies", root_path, class: "btn btn-primary theme-color" %>
+</div>

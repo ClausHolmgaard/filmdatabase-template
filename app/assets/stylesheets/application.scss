@@ -1,1 +1,10 @@
 @import "bootstrap";
+
+.inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nostretch {
+    align-self: flex-end;
+}
