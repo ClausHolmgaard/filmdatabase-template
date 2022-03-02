@@ -1,0 +1,11 @@
+<%= image_tag @movie.url, :class => "img-thumbnail" %><br>
+<br>
+
+<h1><%= @movie.title %></h1><br>
+
+<p><b>Year</b> <%= @movie.year %></p>
+<p><b>Genre</b> <%= @movie.genre %></p>
+<p><b>Director</b> <%= @movie.director %></p>
+<br>
+<%= link_to "Delete", movie_path(@movie), :class => "btn btn-danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
+<%= link_to "Edit", edit_movie_path(@movie), :class => "btn btn-primary"%>

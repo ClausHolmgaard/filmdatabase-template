@@ -1,0 +1,9 @@
+<h1>Edit movie</h1>
+<br>
+<%= image_tag("", height: '128', :id => 'show_poster') %><br>
+<%= render "form", movie: @movie %>
+
+<script>
+	var url = document.getElementById("movie_url").value;
+	document.getElementById("show_poster").src = url;
+</script>
